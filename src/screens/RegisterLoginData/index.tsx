@@ -48,13 +48,12 @@ export function RegisterLoginData() {
     }
 
     const dataKey = '@savepass:logins';
-    const storagedItems = await  AsyncStorage.getItem(dataKey);
+    const storagedItems = await AsyncStorage.getItem(dataKey);
     const parsedItems = storagedItems ? JSON.parse(storagedItems) : [];
 
     await AsyncStorage.setItem(dataKey, JSON.stringify([...parsedItems, newLoginData]))
-    navigate('Home')
-    // Save data on AsyncStorage and navigate to 'Home' screen
-  }
+    navigate('Home');
+  };
 
   return (
     <KeyboardAvoidingView
@@ -69,7 +68,7 @@ export function RegisterLoginData() {
             testID="service-name-input"
             title="Nome do serviço"
             name="service_name"
-            error={errors.service_name &&  errors.service_name.message}
+            error={errors.service_name && errors.service_name.message}
             control={control}
             autoCapitalize="sentences"
             autoCorrect
